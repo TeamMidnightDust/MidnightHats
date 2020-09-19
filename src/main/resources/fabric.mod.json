@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "midnight-hats",
+  "version": "${version}",
+
+  "name": "Midnight Hats",
+  "description": "Adds hats for contributers, friends and donators of MidnightDust and for special events!",
+  "authors": [
+    "Motschen",
+    "TeamMidnightDust"
+  ],
+  "contact": {
+    "homepage": "https://www.midnightdust.eu/",
+    "sources": "https://github.com/TeamMidnightDust/MidnightHats",
+    "issues": "https://github.com/TeamMidnightDust/MidnightHats/issues"
+  },
+
+  "license": "MIT",
+  "icon": "assets/midnight-hats/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "eu.midnightdust.hats.HatsClient"
+    ]
+  },
+
+  "mixins": [
+    "midnight-hats.mixins.json"
+  ],
+
+  "depends": {
+    "fabric": "*"
+  }
+}
