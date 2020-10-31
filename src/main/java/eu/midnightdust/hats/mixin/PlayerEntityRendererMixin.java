@@ -2,6 +2,7 @@ package eu.midnightdust.hats.mixin;
 
 import eu.midnightdust.hats.bunny.BunnyEarsFeatureRenderer;
 import eu.midnightdust.hats.christmas.ChristmasHatFeatureRenderer;
+import eu.midnightdust.hats.tater.TinyPotatoFeatureRenderer;
 import eu.midnightdust.hats.witch.WitchHatFeatureRenderer;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -24,5 +25,6 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         this.addFeature(new WitchHatFeatureRenderer(this));
         this.addFeature(new ChristmasHatFeatureRenderer(this));
         this.addFeature(new BunnyEarsFeatureRenderer(this));
+        this.addFeature(new TinyPotatoFeatureRenderer(this));
     }
 }

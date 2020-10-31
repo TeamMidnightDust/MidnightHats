@@ -1,9 +1,10 @@
 package eu.midnightdust.hats.christmas;
 
+import eu.midnightdust.hats.config.AreEventHatsEnabled;
 import eu.midnightdust.hats.web.HatLoader;
-import eu.midnightdust.hats.witch.WitchHatFeatureRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -41,7 +42,13 @@ public class ChristmasHatFeatureRenderer<T extends LivingEntity, M extends Entit
 
 
                 if (Calendar.getInstance().get(Calendar.MONTH) == Calendar.DECEMBER && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) >= 23 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) <= 26) {
-                    hat_type = CHRISTMAS;
+                    if (FabricLoader.getInstance().isModLoaded("autoconfig1u")) {
+                        if (AreEventHatsEnabled.areEventHatsEnabled() == true) {
+                            hat_type = CHRISTMAS;
+                        }
+                        else hat_type = DEACTIVATED;
+                    }
+                    else hat_type = CHRISTMAS;
                 }else {
                     hat_type = DEACTIVATED;
                 }

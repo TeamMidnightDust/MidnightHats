@@ -1,4 +1,4 @@
-package eu.midnightdust.hats.bunny;
+package eu.midnightdust.hats.tater;
 
 import eu.midnightdust.hats.config.AreEventHatsEnabled;
 import eu.midnightdust.hats.web.HatLoader;
@@ -23,14 +23,14 @@ import java.util.Calendar;
 import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
-public class BunnyEarsFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
+public class TinyPotatoFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
     private static final UUID MOTSCHEN = UUID.fromString("a44c2660-630f-478f-946a-e518669fcf0c");
 
     private static final Identifier DEACTIVATED = new Identifier("midnight-hats:textures/hats/empty.png");
-    private static final Identifier RABBIT = new Identifier("textures/entity/rabbit/brown.png");
-    private final BunnyEarsModel<T> bunnyEars = new BunnyEarsModel<>();
+    private static final Identifier TATER = new Identifier("midnight-hats:textures/hats/tater.png");
+    private final TinyPotatoModel<T> tinyPotato = new TinyPotatoModel<>();
 
-    public BunnyEarsFeatureRenderer(LivingEntityRenderer<T, M> livingEntityRenderer) {
+    public TinyPotatoFeatureRenderer(LivingEntityRenderer<T, M> livingEntityRenderer) {
         super(livingEntityRenderer);
     }
 
@@ -40,14 +40,14 @@ public class BunnyEarsFeatureRenderer<T extends LivingEntity, M extends EntityMo
             Identifier hat_type;
             if (livingEntity instanceof AbstractClientPlayerEntity) {
 
-                if (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) <= 4) {
+                if (Calendar.getInstance().get(Calendar.MONTH) == Calendar.DECEMBER && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 10) {
                     if (FabricLoader.getInstance().isModLoaded("autoconfig1u")) {
                         if (AreEventHatsEnabled.areEventHatsEnabled() == true) {
-                            hat_type = RABBIT;
+                            hat_type = TATER;
                         }
                         else hat_type = DEACTIVATED;
                     }
-                    else hat_type = RABBIT;
+                    else hat_type = TATER;
                 }else {
                     hat_type = DEACTIVATED;
                 }
@@ -60,7 +60,7 @@ public class BunnyEarsFeatureRenderer<T extends LivingEntity, M extends EntityMo
 
                 ((ModelWithHead) this.getContextModel()).getHead().rotate(matrixStack);
                 VertexConsumer vertexConsumer = ItemRenderer.getArmorVertexConsumer(vertexConsumerProvider, RenderLayer.getEntityCutoutNoCull(hat_type), false, false);
-                this.bunnyEars.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+                this.tinyPotato.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
 
                 matrixStack.pop();
             }

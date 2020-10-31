@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Midnight Hats",
-  "description": "Adds hats for contributers, friends and donators of MidnightDust and for special events!",
+  "description": "Adds hats for contributers, friends and donators of MidnightDust and for special events! Credits to the Botania team for the Tiny Potato texture.",
   "authors": [
     "Motschen",
     "TeamMidnightDust"
@@ -22,6 +22,9 @@
   "entrypoints": {
     "client": [
       "eu.midnightdust.hats.HatsClient"
+    ],
+    "modmenu": [
+      "eu.midnightdust.hats.config.ModMenuIntegration"
     ]
   },
 

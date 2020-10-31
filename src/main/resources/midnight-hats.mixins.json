@@ -2,7 +2,7 @@
   "required": true,
   "package": "eu.midnightdust.hats.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
+  "client": [
     "PlayerEntityRendererMixin"
   ],
   "injectors": {

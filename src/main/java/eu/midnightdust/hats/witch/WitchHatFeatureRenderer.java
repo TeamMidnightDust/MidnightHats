@@ -1,8 +1,10 @@
 package eu.midnightdust.hats.witch;
 
+import eu.midnightdust.hats.config.AreEventHatsEnabled;
 import eu.midnightdust.hats.web.HatLoader;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -34,8 +36,6 @@ public class WitchHatFeatureRenderer<T extends LivingEntity, M extends EntityMod
     private static final Identifier PRIDE_SKIN = new Identifier("midnight-hats:textures/hats/pride.png");
     private final WitchHatModel<T> witchHat = new WitchHatModel<>();
 
-
-
     public WitchHatFeatureRenderer(LivingEntityRenderer<T, M> livingEntityRenderer) {
         super(livingEntityRenderer);
     }
@@ -59,7 +59,13 @@ public class WitchHatFeatureRenderer<T extends LivingEntity, M extends EntityMod
                 }else if (HatLoader.PLAYER_HATS.containsKey(abstractClientPlayerEntity.getUuid()) && HatLoader.PLAYER_HATS.get(abstractClientPlayerEntity.getUuid()).getHatType().contains("pride")) {
                     hat_type = PRIDE_SKIN;
                 }else if (Calendar.getInstance().get(Calendar.MONTH) == Calendar.OCTOBER && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) >= 30) {
-                    hat_type = WITCH;
+                    if (FabricLoader.getInstance().isModLoaded("autoconfig1u")) {
+                        if (AreEventHatsEnabled.areEventHatsEnabled() == true) {
+                            hat_type = WITCH;
+                        }
+                        else hat_type = DEACTIVATED;
+                    }
+                    else hat_type = WITCH;
                 }else {
                     hat_type = DEACTIVATED;
                 }
